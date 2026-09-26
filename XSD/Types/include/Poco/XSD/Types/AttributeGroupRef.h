@@ -37,16 +37,16 @@ public:
 	AttributeGroupRef(const std::string& id, const QName& ref);
 		/// Creates the AttributeGroupRef.
 
-	virtual ~AttributeGroupRef();
+	~AttributeGroupRef() override;
 		/// Destroys the AttributeGroupRef.
 
 	// AbstractAttributeGroup
-	const AbstractAttributeGroup::Attributes& getAttributes() const;
-	bool hasAnyAttribute() const;
-	AnyAttribute::Ptr getAny() const;
-	void add(AttributeContent::Ptr ptr);
-	void fixup();
-	void accept(Visitor& v) const;
+	[[nodiscard]] const AbstractAttributeGroup::Attributes& getAttributes() const override;
+	[[nodiscard]] bool hasAnyAttribute() const override;
+	[[nodiscard]] AnyAttribute::Ptr getAny() const override;
+	[[noreturn]] void add(AttributeContent::Ptr ptr) override;
+	void fixup() override;
+	void accept(Visitor& v) const override;
 
 private:
 	QName _ref;
@@ -57,7 +57,7 @@ private:
 //
 // inlines
 //
-inline void AttributeGroupRef::add(AttributeContent::Ptr ptr)
+inline void AttributeGroupRef::add([[maybe_unused]] AttributeContent::Ptr ptr)
 {
 	throw Poco::NoPermissionException("Adding attributes to refs not allowed!");
 }

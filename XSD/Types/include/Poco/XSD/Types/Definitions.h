@@ -20,7 +20,6 @@
 
 #include "Poco/XSD/Types/XSDTypes.h"
 #include "Poco/XSD/Types/Message.h"
-#include "Poco/XSD/Types/Operation.h"
 #include "Poco/XSD/Types/PortType.h"
 #include "Poco/XSD/Types/Binding.h"
 #include "Poco/XSD/Types/Service.h"
@@ -42,20 +41,17 @@ public:
 	using Bindings = std::map<std::string, Binding::Ptr>;
 	using Services = std::map<std::string, Service::Ptr>;
 
-	Definitions(const std::string& targetNS);
+	explicit Definitions(const std::string& targetNS);
 		/// Creates the Definitions.
 
-	~Definitions();
+	~Definitions() override;
 		/// Destroys the Definitions.
 
-	const std::string& targetNamespace() const;
+	[[nodiscard]] const std::string& targetNamespace() const;
 		/// The target namespace of the WSDL.
 
 	void addMessage(Message::Ptr pMessage);
 		/// Adds a WSDL Message.
-		
-	void addOperation(Operation::Ptr pOperation);
-		/// Adds a WSDL Operation.
 		
 	void addPortType(PortType::Ptr pPortType);
 		/// Adds a WSDL port type.
@@ -66,19 +62,19 @@ public:
 	void addService(Service::Ptr pService);
 		/// Adds a WSDL service.
 
-	const Definitions::Messages& messages() const;
+	[[nodiscard]] const Definitions::Messages& messages() const;
 		/// Returns all WSDL messages.
 		
-	const Definitions::PortTypes& portTypes() const;
+	[[nodiscard]] const Definitions::PortTypes& portTypes() const;
 		/// Returns all WSDL port types.
 		
-	const Definitions::Bindings& bindings() const;
+	[[nodiscard]] const Definitions::Bindings& bindings() const;
 		/// Returns all WSDL bindings.
 		
-	const Definitions::Services& services() const;
+	[[nodiscard]] const Definitions::Services& services() const;
 		/// Returns all WSDL services.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _targetNamespace;

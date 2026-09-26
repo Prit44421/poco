@@ -46,14 +46,14 @@ public:
 	void set(const std::string& name, const std::string& value);
 		/// Sets a binding property.
 		
-	bool has(const std::string& name) const;
+	[[nodiscard]] bool has(const std::string& name) const;
 		/// Returns true if a property with the given name has been defined.
 		
-	const std::string& get(const std::string& name) const;
+	[[nodiscard]] const std::string& get(const std::string& name) const;
 		/// Returns the value of the property with the given name.
 		/// Throws a Poco::NotFoundException if the property has not been set.
 		
-	const std::string& get(const std::string& name, const std::string& deflt) const;
+	[[nodiscard]] const std::string& get(const std::string& name, const std::string& deflt) const;
 		/// Returns the valuie of the property with the given name, or
 		/// the given default value if the property has not been set.
 

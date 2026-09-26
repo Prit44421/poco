@@ -35,22 +35,22 @@ class XSDTypes_API List: public AbstractList
 public:
 	using Ptr = AutoPtr<List>;
 
-	List(const std::string& id);
+	explicit List(const std::string& id);
 		/// Creates the List.
 
-	virtual ~List();
+	~List() override;
 		/// Destroys the List.
 
 	void setType(SimpleType::Ptr pSimple);
 		/// Sets the simple type.
 
-	const std::vector<const Type*>& types() const;
+	[[nodiscard]] const std::vector<const Type*>& types() const override;
 		/// Returns the type that we inherit from.
 
-	void fixup();
+	void fixup() override;
 		/// Replaces type references with the referenced type object.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	SimpleType::Ptr _pSimple;

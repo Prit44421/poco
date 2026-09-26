@@ -46,28 +46,28 @@ public:
 	Type(const std::string& id, const std::string& name);
 		/// Creates the Type.
 
-	virtual ~Type();
+	~Type() override;
 		/// Destroys the Type.
 
 	void setName(const std::string& name);
 		/// Sets the name
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Returns the name, can be empty
 
 	virtual void fixup() = 0;
 		/// Resolves type references to a parent class
 
-	virtual const std::vector<const Type*>& parents() const = 0;
+	[[nodiscard]] virtual const std::vector<const Type*>& parents() const = 0;
 		/// Returns the parent classes 
 
-	OrderIterator iterator() const;
+	[[nodiscard]] OrderIterator iterator() const;
 		/// Creates an iterator for the type taking care of inheritance information
 
 	void setSchema(const Schema* pSchema);
 		/// Sets the schema
 
-	const Schema* getSchema() const;
+	[[nodiscard]] const Schema* getSchema() const;
 		/// Gets the schema. Note that internal inline types have no schema associated!
 
 protected:

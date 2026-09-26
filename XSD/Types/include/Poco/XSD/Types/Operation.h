@@ -40,85 +40,85 @@ public:
 	Operation();
 		/// Creates the Operation.
 
-	Operation(const std::string& name);
+	explicit Operation(const std::string& name);
 		/// Creates the Operation.
 
-	~Operation();
+	~Operation() override;
 		/// Destroys the Operation.
 
 	void setName(const std::string& name);
 		/// Sets the name.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Returns the name.
 		
 	void setInputName(const std::string& name);
 		/// Sets the input name.
 
-	const std::string& getInputName() const;
+	[[nodiscard]] const std::string& getInputName() const;
 		/// Returns the input name.
 
 	void setInputMessage(const XML::Name& name);
 		/// Sets the input message.
 
-	const XML::Name& getInputMessage() const;
+	[[nodiscard]] const XML::Name& getInputMessage() const;
 		/// Returns the input message.
 		
-	const BindingProperties& inputBindingProperties() const;
+	[[nodiscard]] const BindingProperties& inputBindingProperties() const;
 		/// Returns the input binding properties.
 
-	BindingProperties& inputBindingProperties();
+	[[nodiscard]] BindingProperties& inputBindingProperties();
 		/// Returns the input binding properties.
 
 	void setOutputName(const std::string& name);
 		/// Sets the input name.
 
-	const std::string& getOutputName() const;
+	[[nodiscard]] const std::string& getOutputName() const;
 		/// Returns the input name.
 
 	void setOutputMessage(const XML::Name& name);
 		/// Sets the input message.
 
-	const XML::Name& getOutputMessage() const;
+	[[nodiscard]] const XML::Name& getOutputMessage() const;
 		/// Returns the input message.
 
-	const BindingProperties& outputBindingProperties() const;
+	[[nodiscard]] const BindingProperties& outputBindingProperties() const;
 		/// Returns the output binding properties.
 
-	BindingProperties& outputBindingProperties();
+	[[nodiscard]] BindingProperties& outputBindingProperties();
 		/// Returns the output binding properties.
 
 	void setFaultName(const std::string& name);
 		/// Sets the input name.
 
-	const std::string& getFaultName() const;
+	[[nodiscard]] const std::string& getFaultName() const;
 		/// Returns the input name.
 
 	void setFaultMessage(const XML::Name& name);
 		/// Sets the input message.
 
-	const XML::Name& getFaultMessage() const;
+	[[nodiscard]] const XML::Name& getFaultMessage() const;
 		/// Returns the input message.
 
-	const BindingProperties& faultBindingProperties() const;
+	[[nodiscard]] const BindingProperties& faultBindingProperties() const;
 		/// Returns the fault binding properties.
 
-	BindingProperties& faultBindingProperties();
+	[[nodiscard]] BindingProperties& faultBindingProperties();
 		/// Returns the fault binding properties.
 
-	const BindingProperties& bindingProperties() const;
+	[[nodiscard]] const BindingProperties& bindingProperties() const;
 		/// Returns the binding properties for the entire operation (e.g., "soap.soapAction", "soap.style").
 		
-	BindingProperties& bindingProperties();
+	[[nodiscard]] BindingProperties& bindingProperties();
 		/// Returns the binding properties for the entire operation (e.g., "soap.soapAction", "soap.style").
 		
-	const std::vector<std::string>& parameterOrder() const;
+	[[nodiscard]] const std::vector<std::string>& parameterOrder() const;
 		/// Returns the specified parameter order (based on the parameterOrder attribute).
 		
 	void setParameterOrder(const std::string& parameterOrder);
 		/// Sets the parameter order.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _name;

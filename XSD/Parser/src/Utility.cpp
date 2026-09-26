@@ -12,7 +12,7 @@
 //
 
 
-#include "Poco/XSD/Parser/Utility.h"
+#include "Utility.h"
 #include "Poco/XSD/Parser/XSDContentHandler.h"
 #include "Poco/XSD/Types/TypesManager.h"
 #include "Poco/NumberParser.h"

@@ -35,10 +35,10 @@ class XSDTypes_API Annotation: public Visitable
 public:
 	using Ptr = Poco::AutoPtr<Annotation>;
 
-	Annotation(const std::string& id);
+	explicit Annotation(const std::string& id);
 		/// Creates the Annotation.
 
-	~Annotation();
+	~Annotation() override;
 		/// Destroys the Annotation.
 
 	Annotation(const Annotation& ann);
@@ -50,15 +50,15 @@ public:
 	void swap(Annotation& ann);
 		/// Swap implementation
 
-	const std::vector<AnnotationContent::Ptr>& annotationContent() const;
+	[[nodiscard]] const std::vector<AnnotationContent::Ptr>& annotationContent() const;
 		/// Returns the annotation content read-only
 
-	std::vector<AnnotationContent::Ptr>& annotationContent();
+	[[nodiscard]] std::vector<AnnotationContent::Ptr>& annotationContent();
 		/// Returns the annotation content writable
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
-	const std::string& id() const;
+	[[nodiscard]] const std::string& id() const;
 		/// Returns the id
 
 private:

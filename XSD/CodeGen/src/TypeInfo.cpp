@@ -39,8 +39,3 @@ TypeInfo::TypeInfo(const std::string& name, const std::string& nameSpace, const 
 	_isScalar(isScalar)
 {
 }
-
-
-TypeInfo::~TypeInfo()
-{
-}

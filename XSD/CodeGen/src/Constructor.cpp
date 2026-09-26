@@ -20,11 +20,6 @@ Constructor::Constructor(const ClassInfo& owner, Utility::Access acc):
 }
 
 
-Constructor::~Constructor()
-{
-}
-
-
 void Constructor::addInitializationCode(const std::string& line)
 {
 	std::string trimmed = Poco::trim(line);

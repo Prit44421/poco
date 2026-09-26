@@ -79,7 +79,7 @@ public:
 	}
 
 protected:
-	void initialize(Application& self)
+	void initialize(Application& self) override
 	{
 		Application::initialize(self);
 		Poco::Net::HTTPStreamFactory::registerFactory();
@@ -89,17 +89,17 @@ protected:
 #endif
 	}
 
-	void uninitialize()
+	void uninitialize() override
 	{
 		Application::uninitialize();
 	}
 
-	void reinitialize(Application& self)
+	void reinitialize(Application& self) override
 	{
 		Application::reinitialize(self);
 	}
 
-	void defineOptions(OptionSet& options)
+	void defineOptions(OptionSet& options) override
 	{
 		Application::defineOptions(options);
 
@@ -202,7 +202,7 @@ protected:
 		}
 	}
 
-	SchemaInfo parseDefault()
+	[[nodiscard]] SchemaInfo parseDefault()
 	{
 		/*
 		<default>
@@ -256,7 +256,7 @@ protected:
 		return result;
 	}
 
-	SchemaInfo parseSchema(const SchemaInfo& def, int pos)
+	[[nodiscard]] SchemaInfo parseSchema(const SchemaInfo& def, int pos)
 	{
 		/*
 		<schema targetNamespace="tns">
@@ -311,7 +311,7 @@ protected:
 		return SchemaInfo(tns, cppNS, declSpec, Poco::Path(incDir), Poco::Path(srcDir), Poco::Path(rootIncDir), copyright, extraIncludes, remHeaders, preserveOptional, _namespaceInHeaderFileNames, timestamps);
 	}
 
-	int main(const std::vector<std::string>& args)
+	int main(const std::vector<std::string>& args) override
 	{
 		if (!_helpRequested)
 		{

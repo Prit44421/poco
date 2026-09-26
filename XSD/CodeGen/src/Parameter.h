@@ -33,16 +33,14 @@ public:
 		bool soapHeader,
 		bool nillable);
 
-	~Parameter();
-
-	bool getSoapHeader() const;
+	[[nodiscard]] bool getSoapHeader() const;
 		/// Returns if the parameter should be sent in the soapheader
 
 	void setSoapHeader(bool soapHeader);
 	
 	void setDirection(Direction dir);
 	
-	Direction getDirection() const;
+	[[nodiscard]] Direction getDirection() const;
 
 private:
 	bool _soapHeader;

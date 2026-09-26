@@ -46,16 +46,16 @@ public:
 	Message();
 		/// Creates the Message.
 
-	Message(const std::string& name);
+	explicit Message(const std::string& name);
 		/// Creates the Message.
 
-	~Message();
+	~Message() override;
 		/// Destroys the Message.
 
 	void setName(const std::string& name);
 		/// Sets the name.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Returns the name.
 		
 	void addElementPart(const std::string& name, const Poco::XML::Name& elementName);
@@ -64,10 +64,10 @@ public:
 	void addTypePart(const std::string& name, const Poco::XML::Name& typeName);
 		/// Adds a new part to the message.
 		
-	const Parts& parts() const;
+	[[nodiscard]] const Parts& parts() const;
 		/// Returns the message parts.
 	
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _name;

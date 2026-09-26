@@ -20,6 +20,7 @@
 
 #include "Poco/XSD/Types/XSDTypes.h"
 #include "Poco/XSD/Types/OrderIteratorImpl.h"
+#include "Poco/AutoPtr.h"
 #include <map>
 
 
@@ -36,23 +37,23 @@ class XSDTypes_API AllIterator: public OrderIteratorImpl
 	/// An iterator for iterating over All content groups.
 {
 public:
-	AllIterator(const All& all);
+	explicit AllIterator(const All& all);
 		/// Creates the AllIterator.
 
-	virtual ~AllIterator();
+	~AllIterator() override;
 		/// Destroys the AllIterator.
 
 	// OrderIteratorImpl
-	OrderContent::Ptr next(const std::string& name);
-	const std::set<std::string>& validNexts() const;
-	bool end() const;
-	bool validNext(const std::string& name) const;
-	void close();
-	bool canClose() const;
-	void reset();
+	OrderContent::Ptr next(const std::string& name) override;
+	[[nodiscard]] const std::set<std::string>& validNexts() const override;
+	[[nodiscard]] bool end() const override;
+	[[nodiscard]] bool validNext(const std::string& name) const override;
+	void close() override;
+	[[nodiscard]] bool canClose() const override;
+	void reset() override;
 
 private:
-	using Content = std::map<std::string, ElementIterator*>;
+	using Content = std::map<std::string, AutoPtr<ElementIterator>>;
 	using NextSet = std::set<std::string>;
 
 	UInt32 _min;

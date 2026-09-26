@@ -41,19 +41,19 @@ public:
 	AnnotatedObject();
 		/// Creates the AnnotatedObject.
 
-	AnnotatedObject(const std::string& id);
+	explicit AnnotatedObject(const std::string& id);
 		/// Creates the AnnotatedObject.
 
 	AnnotatedObject(const std::string& id, const Annotation& ann);
 		/// Creates the AnnotatedObject.
 
-	virtual ~AnnotatedObject();
+	~AnnotatedObject() override;
 		/// Destroys the AnnotatedObject.
 
 	void addAnnotation(const Annotation& ann);
 		/// Adds the annotation at the object.
 
-	const Annotations& getAnnotations() const;
+	[[nodiscard]] const Annotations& getAnnotations() const;
 		/// Returns the annotation from the object.
 
 private:

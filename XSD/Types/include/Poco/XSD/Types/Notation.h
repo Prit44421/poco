@@ -36,19 +36,19 @@ public:
 	Notation(const std::string& id, const std::string& name, const std::string& pubToken, const std::string& system);
 		/// Creates the Notation.
 
-	virtual ~Notation();
+	~Notation() override;
 		/// Destroys the Notation.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Gets the name of the notation.
 
-	const std::string& getPublic() const;
+	[[nodiscard]] const std::string& getPublic() const;
 		// Gets the public id
 
-	const std::string& getSystem() const;
+	[[nodiscard]] const std::string& getSystem() const;
 		/// Gets the system id.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _name;

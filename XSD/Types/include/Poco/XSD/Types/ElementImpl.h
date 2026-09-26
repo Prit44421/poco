@@ -53,18 +53,18 @@ public:
 		const QName& substitutionGroup = QName::INVALID);
 		/// Creates an initialized ElementImpl
 
-	~ElementImpl();
+	~ElementImpl() override;
 		/// Destroys the ElementImpl.
 
-	void fixup();
+	void fixup() override;
 		/// ElementImpl is fine, just fwd to the internal _pType.
 
-	const Type& type() const;
+	[[nodiscard]] const Type& type() const override;
 	
 	void setType(AutoPtr<Type> pType);
 		/// Sets the type internally
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	const Type* _pType;

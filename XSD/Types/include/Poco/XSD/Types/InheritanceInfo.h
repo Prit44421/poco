@@ -43,10 +43,10 @@ public:
 	InheritanceInfo();
 		/// Creates the InheritanceInfo.
 
-	virtual ~InheritanceInfo();
+	~InheritanceInfo() override;
 		/// Destroys the InheritanceInfo.
 
-	const Type* type() const;
+	[[nodiscard]] const Type* type() const;
 		/// Returns the parent that we inherit from.
 
 	void setType(const QName& parent);
@@ -59,10 +59,10 @@ public:
 	void fixup();
 		/// Replaces type references with the referenced type object.
 
-	bool getRestriction() const;
+	[[nodiscard]] bool getRestriction() const;
 		/// True if we inherit by restriction, otherwise we inherit by extension.
 
-	bool getSimpleContent() const;
+	[[nodiscard]] bool getSimpleContent() const;
 		/// True if we inherit from a simple type, false if we have a complexContent.
 
 	void setRestriction(bool rest);
@@ -71,9 +71,9 @@ public:
 	void setSimpleContent(bool cont);
 		/// Set to true if we inherit from a simple type, false if we have a complexContent.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
-	const std::vector<const Type*>& parents() const;
+	[[nodiscard]] const std::vector<const Type*>& parents() const;
 
 private:
 	QName       _ref;

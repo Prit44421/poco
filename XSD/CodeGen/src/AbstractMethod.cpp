@@ -24,11 +24,6 @@ AbstractMethod::AbstractMethod(const std::string& name, Utility::Access acc, boo
 }
 
 
-AbstractMethod::~AbstractMethod()
-{
-}
-
-
 void AbstractMethod::addCode(const std::string& line)
 {
 	_code.push_back(Poco::trim(line));

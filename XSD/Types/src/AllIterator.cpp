@@ -39,7 +39,7 @@ AllIterator::AllIterator(const All& all):
 		if (it->second->getMaxOccurs() > 0)
 		{
 			// insert can never fail: all.content is a map, ie. all keys are guaranteed to be unique
-			_mapIt.insert(std::make_pair(it->first, new ElementIterator(*const_cast<Element*>(it->second.get()))));
+			_mapIt.insert(std::make_pair(it->first, makeAuto<ElementIterator>(*const_cast<Element*>(it->second.get()))));
 		}
 	}
 
@@ -49,12 +49,6 @@ AllIterator::AllIterator(const All& all):
 
 AllIterator::~AllIterator()
 {
-	AllIterator::Content::iterator it = _mapIt.begin();
-	AllIterator::Content::iterator itEnd = _mapIt.end();
-	for (; it != itEnd; ++it)
-	{
-		delete it->second;
-	}
 }
 
 

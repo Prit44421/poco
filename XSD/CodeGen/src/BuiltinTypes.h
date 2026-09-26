@@ -27,22 +27,22 @@ class BuiltinTypes
 	/// Singleton containing the mappings of xsd types to cpp types
 {
 public:
-	static BuiltinTypes& instance();
+	[[nodiscard]] static BuiltinTypes& instance();
 		/// Returns an instance of the singleton
 
-	bool tryGet(const std::string& xsdType, TypeInfo& result) const;
+	[[nodiscard]] bool tryGet(const std::string& xsdType, TypeInfo& result) const;
 		/// If it finds a type, the method returns true and sets result
 
-	const TypeInfo& get(const std::string& xsdType) const;
+	[[nodiscard]] const TypeInfo& get(const std::string& xsdType) const;
 		/// Like tryGet but throws an exception if the type is not found
 
-	bool isKnownTypeInfo(const TypeInfo& info) const;
+	[[nodiscard]] bool isKnownTypeInfo(const TypeInfo& info) const;
 		/// returns true if the info is from the set of primitve cpp types
 
-	bool isStringType(const TypeInfo& info) const;
+	[[nodiscard]] bool isStringType(const TypeInfo& info) const;
 		/// Returns true if we can initialize the type with a string
 
-	std::string generateInitializeValue(ClassInfo& ci, 
+	[[nodiscard]] std::string generateInitializeValue(ClassInfo& ci, 
 		Constructor& constr, 
 		const Variable& var,
 		const std::string& xsdName,

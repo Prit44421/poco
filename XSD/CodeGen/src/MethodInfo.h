@@ -20,8 +20,6 @@ class MethodInfo: public AbstractMethod
 public:
 	MethodInfo(const std::string& name, Utility::Access acc, bool isConst, bool isStatic, bool isVirtual, bool isAbstract);
 
-	virtual ~MethodInfo();
-
 	void setReturnParameter(Poco::SharedPtr<Parameter> pParam);
 		/// Sets the return parameter, set to null for void return.
 

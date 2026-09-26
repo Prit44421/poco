@@ -132,8 +132,8 @@ public:
 		
 		StateInfo();
 		StateInfo(State _state, StartMethod start, EndMethod end, const StateSet& successors);
-		bool isValidSuccessor(const std::string& uri, const std::string& localName) const;
-		bool containsAny() const;
+		[[nodiscard]] bool isValidSuccessor(const std::string& uri, const std::string& localName) const;
+		[[nodiscard]] bool containsAny() const;
 	};
 
 
@@ -151,9 +151,9 @@ public:
 	virtual ~StateMachine();
 		/// Destroys the StateMachine.
 
-	const StateMachine::StateInfo& stateInfo(StateMachine::State aState) const;
+	[[nodiscard]] const StateMachine::StateInfo& stateInfo(StateMachine::State aState) const;
 
-	StateMachine::State state(const std::string& uri, const std::string& elementName, StateMachine::State parent) const;
+	[[nodiscard]] StateMachine::State state(const std::string& uri, const std::string& elementName, StateMachine::State parent) const;
 		/// Returns the state for an xml element name.
 
 private:

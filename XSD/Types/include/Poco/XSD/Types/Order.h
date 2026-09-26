@@ -36,7 +36,7 @@ public:
 	Order(const std::string& id, Poco::UInt32 minOcc, Poco::UInt32 maxOcc);
 		/// Creates the Order.
 
-	virtual ~Order();
+	~Order() override;
 		/// Destroys the Order.
 
 	virtual void add(OrderContent::Ptr pChild) = 0;

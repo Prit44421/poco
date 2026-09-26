@@ -33,17 +33,17 @@ class XSDTypes_API AbstractList: public SimpleTypeInheritance
 public:
 	using Ptr = AutoPtr<AbstractList>;
 
-	AbstractList(const std::string& id);
+	explicit AbstractList(const std::string& id);
 		/// Creates the AbstractList.
 
-	virtual ~AbstractList();
+	~AbstractList() override;
 		/// Destroys the AbstractList.
 
-	bool isRestriction() const;
+	[[nodiscard]] bool isRestriction() const override;
 
-	bool isList() const;
+	[[nodiscard]] bool isList() const override;
 
-	bool isUnion() const;
+	[[nodiscard]] bool isUnion() const override;
 };
 
 

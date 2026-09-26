@@ -36,19 +36,19 @@ public:
 	Group(const std::string& id, const std::string& name, Poco::UInt32 minOcc, Poco::UInt32 maxOcc);
 		/// Creates the Group.
 
-	virtual ~Group();
+	~Group() override;
 		/// Destroys the Group.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const override;
 		/// Returns the non-empty name.
 
-	Order::Ptr getChild() const;
+	[[nodiscard]] Order::Ptr getChild() const override;
 
 	void setChild(Order::Ptr ptr);
 
-	void fixup();
+	void fixup() override;
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _name;

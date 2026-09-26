@@ -38,33 +38,33 @@ public:
 	Union(const std::string& id, const std::vector<QName>& memberTypes);
 		/// Creates the Union.
 
-	virtual ~Union();
+	~Union() override;
 		/// Destroys the Union.
 
-	const std::vector<QName>& typeReferences() const;
+	[[nodiscard]] const std::vector<QName>& typeReferences() const;
 		/// Returns all the types that are referenced.
 
-	const std::vector<SimpleType::Ptr>& inlineTypes() const;
+	[[nodiscard]] const std::vector<SimpleType::Ptr>& inlineTypes() const;
 		/// Returns all types defined internally.
 
-	std::vector<SimpleType::Ptr>& inlineTypes();
+	[[nodiscard]] std::vector<SimpleType::Ptr>& inlineTypes();
 		/// Returns all types defined internally. If you change this vector you must call fixup later.
 
-	const std::vector<const Type*>& types() const;
+	[[nodiscard]] const std::vector<const Type*>& types() const override;
 		/// Returns the type that we use in the union. Are guaranteed to be all SimpleTypes.
 
-	void fixup();
+	void fixup() override;
 		/// Replaces type references with the referenced type object.
 
-	bool isRestriction() const;
+	[[nodiscard]] bool isRestriction() const override;
 		/// True if we inherit by restriction.
 
-	bool isList() const;
+	[[nodiscard]] bool isList() const override;
 		/// Inherit by list.
 
-	bool isUnion() const;
+	[[nodiscard]] bool isUnion() const override;
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::vector<QName> _memberTypes;

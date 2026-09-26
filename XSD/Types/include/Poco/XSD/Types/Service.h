@@ -45,25 +45,25 @@ public:
 	Service();
 		/// Creates the Service.
 
-	Service(const std::string& name);
+	explicit Service(const std::string& name);
 		/// Creates the Service.
 
-	~Service();
+	~Service() override;
 		/// Destroys the Service.
 
 	void setName(const std::string& name);
 		/// Sets the name.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Returns the name.
 		
 	void addPort(const std::string& name, const Poco::XML::Name& binding);
 		/// Adds a new port to the Service.
 		
-	const Ports& ports() const;
+	[[nodiscard]] const Ports& ports() const;
 		/// Returns the Service ports.
 	
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _name;

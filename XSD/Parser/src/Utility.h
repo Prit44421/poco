@@ -33,10 +33,13 @@ namespace XSD {
 namespace Parser {
 
 
-class XSDParser_API Utility
+class Utility
 	/// Utility class, used to extract attribute values.
 {
 public:
+	Utility() = delete;
+		/// Not instantiable; all members are static.
+
 	static bool getQualified(const CompactAttributes::const_iterator& itEnd, const CompactAttributes::const_iterator& itAttr, bool defaultValue);
 
 	static void getBlock(const CompactAttributes::const_iterator& itEnd, const CompactAttributes::const_iterator& itAttr, bool& blockRestriction, bool& blockExtension, bool& blockSubstitution);
@@ -67,12 +70,6 @@ public:
 	static Poco::XSD::Types::AnyAttribute::ProcessStyle getAnyAttrProcessStyle(const CompactAttributes::const_iterator& itEnd, const CompactAttributes::const_iterator& itAttr);
 
 	static Poco::XSD::Types::AbstractAttribute::Usage getAttrUsage(const CompactAttributes::const_iterator& itEnd, const CompactAttributes::const_iterator& itAttr, Poco::XSD::Types::AbstractAttribute::Usage def);
-
-private:
-	Utility();
-	Utility(const Utility&);
-	Utility& operator=(const Utility&);
-	~Utility();
 };
 
 

@@ -38,24 +38,24 @@ public:
 	using IdMap = std::map<NamespaceId, std::string>;
 	using NamespaceMap = std::map<std::string, NamespaceId>;
 
-	static NamespaceManager& instance();
+	[[nodiscard]] static NamespaceManager& instance();
 		/// Returns the singleton.
 
-	bool hasNamespace(const std::string& ns) const;
+	[[nodiscard]] bool hasNamespace(const std::string& ns) const;
 
-	bool hasNamespace(NamespaceManager::NamespaceId id) const;
+	[[nodiscard]] bool hasNamespace(NamespaceManager::NamespaceId id) const;
 
-	NamespaceManager::NamespaceMap::const_iterator get(const std::string& ns) const;
+	[[nodiscard]] NamespaceManager::NamespaceMap::const_iterator get(const std::string& ns) const;
 
-	NamespaceManager::NamespaceId getId(const std::string& ns) const;
+	[[nodiscard]] NamespaceManager::NamespaceId getId(const std::string& ns) const;
 
-	const std::string& getNamespace(NamespaceManager::NamespaceId id) const;
+	[[nodiscard]] const std::string& getNamespace(NamespaceManager::NamespaceId id) const;
 
 	NamespaceManager::NamespaceMap::const_iterator set(const std::string& ns);
 		/// Inserts the namespace into the manager and returns the assigned id.
 		/// If the namespace already exists, the insert is ignored and the id is returned.
 
-	NamespaceManager::NamespaceMap::const_iterator end() const;
+	[[nodiscard]] NamespaceManager::NamespaceMap::const_iterator end() const;
 		/// Returns the end iterator.
 
 private:

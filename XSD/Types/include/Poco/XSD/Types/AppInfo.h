@@ -51,13 +51,13 @@ class XSDTypes_API AppInfo: public AnnotationContent
 	///    </xsd:annotation>
 {
 public:
-	AppInfo(const std::string& sourceUri);
+	explicit AppInfo(const std::string& sourceUri);
 		/// Creates the AppInfo.
 
-	virtual ~AppInfo();
+	~AppInfo() override;
 		/// Destroys the AppInfo.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 };

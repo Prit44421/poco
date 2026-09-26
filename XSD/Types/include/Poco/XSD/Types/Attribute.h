@@ -44,31 +44,31 @@ public:
 		AbstractAttribute::Usage use = AbstractAttribute::USE_OPTIONAL);
 		/// Creates the Attribute.
 
-	virtual ~Attribute();
+	~Attribute() override;
 		/// Destroys the Attribute.
 
-	const std::string& defaultValue() const;
+	[[nodiscard]] const std::string& defaultValue() const override;
 		/// Returns the (optional) default value of the attribute. Empty if none is set.
 
-	const std::string& fixedValue() const;
+	[[nodiscard]] const std::string& fixedValue() const override;
 		/// Returns the (optional) fixed value of the attribute. Empty if none is set.
 
-	bool qualifiedForm() const;
+	[[nodiscard]] bool qualifiedForm() const override;
 		/// Returns true if the attribute must be used qualified.
 
 	void setType(SimpleType::Ptr ptr);
 		// Sets the internal anonymous type.
 
-	const SimpleType* type() const;
+	[[nodiscard]] const SimpleType* type() const override;
 		/// Returns the type the attribute uses.
 
-	AbstractAttribute::Usage usage() const;
+	[[nodiscard]] AbstractAttribute::Usage usage() const override;
 		/// Returns the usage options for the Attribute.
 
 	// AbstractAttribute
-	const std::string& nameSpace() const;
-	void fixup();
-	void accept(Visitor& v) const;
+	[[nodiscard]] const std::string& nameSpace() const override;
+	void fixup() override;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _nameSpace;

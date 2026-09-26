@@ -39,7 +39,7 @@ public:
 	CollectionContent(const std::string& id, Poco::UInt32 minOcc, Poco::UInt32 maxOcc);
 		/// Creates the CollectionContent.
 
-	virtual ~CollectionContent();
+	~CollectionContent() override;
 		/// Destroys the CollectionContent.
 
 protected:

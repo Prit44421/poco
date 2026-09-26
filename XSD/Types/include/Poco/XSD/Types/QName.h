@@ -43,20 +43,20 @@ public:
 
 	QName& operator = (const QName& other);
 
-	bool operator == (const QName& other) const;
+	[[nodiscard]] bool operator == (const QName& other) const;
 
-	bool operator != (const QName& other) const;
+	[[nodiscard]] bool operator != (const QName& other) const;
 
 	~QName();
 		/// Destroys the QName.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 
-	const std::string& getNamespace() const;
+	[[nodiscard]] const std::string& getNamespace() const;
 
-	NamespaceManager::NamespaceId getNamespaceId() const;
+	[[nodiscard]] NamespaceManager::NamespaceId getNamespaceId() const;
 
-	const NamespaceManager::NamespaceMap::const_iterator& getIterator() const;
+	[[nodiscard]] const NamespaceManager::NamespaceMap::const_iterator& getIterator() const;
 
 private:
 	std::string _name;

@@ -40,33 +40,33 @@ public:
 	SimpleType(const std::string& id, const std::string& name, bool finalRestriction, bool finalList, bool finalUnion);
 		/// Creates the Type.
 
-	virtual ~SimpleType();
+	~SimpleType() override;
 		/// Destroys the SimpleType.
 
-	bool finalRestriction() const;
+	[[nodiscard]] bool finalRestriction() const;
 		/// Returns if inheritance by restriction is final.
 
-	bool finalList() const;
+	[[nodiscard]] bool finalList() const;
 		/// Returns if this is a type that can be used by another one as list content.
 
-	bool finalUnion() const;
+	[[nodiscard]] bool finalUnion() const;
 		/// Returns if this is a type that can be used by another one as union content.
 
 	void setContent(SimpleTypeInheritance::Ptr pContent);
 		// Sets the content
 
-	SimpleTypeInheritance::Ptr getContent() const;
+	[[nodiscard]] SimpleTypeInheritance::Ptr getContent() const;
 		/// Returns the content. Note that builtin types will have a null content
 		/// because they do not inherit from another type.
 
-	void fixup();
+	void fixup() override;
 		/// Resolves type references to a parent class.
 
-	const std::vector<const Type*>& parents() const;
+	[[nodiscard]] const std::vector<const Type*>& parents() const override;
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
-	void createIterator(std::vector<OrderIterator>& seq) const;
+	void createIterator(std::vector<OrderIterator>& seq) const override;
 
 private:
 	bool _finalRestriction;

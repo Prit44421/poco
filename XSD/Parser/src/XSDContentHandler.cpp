@@ -14,7 +14,7 @@
 
 #include "Poco/XSD/Parser/XSDContentHandler.h"
 #include "Poco/XSD/Parser/Constants.h"
-#include "Poco/XSD/Parser/Utility.h"
+#include "Utility.h"
 #include "Poco/XSD/Types/XSDException.h"
 #include "Poco/XSD/Types/ElementImpl.h"
 #include "Poco/XSD/Types/ElementTypeRef.h"

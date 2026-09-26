@@ -23,15 +23,13 @@ class Constructor: public AbstractMethod
 public:
 	Constructor(const ClassInfo& owner, Utility::Access acc);
 
-	virtual ~Constructor();
-
 	void addParameter(const Parameter& param);
 
 	void addInitializationCode(const std::string& constrLine);
 
 	void addInitializationCode(const std::vector<std::string>& constrLines);
 
-	const std::vector<std::string>& getInitializationCode() const;
+	[[nodiscard]] const std::vector<std::string>& getInitializationCode() const;
 
 private:
 	std::vector<std::string>   _constrCode;

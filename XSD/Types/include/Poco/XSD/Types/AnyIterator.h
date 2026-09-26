@@ -34,20 +34,20 @@ class XSDTypes_API AnyIterator: public OrderIteratorImpl
 	/// An iterator for iterating over Any content groups.
 {
 public:
-	AnyIterator(Any& any);
+	explicit AnyIterator(Any& any);
 		/// Creates the AnyIterator.
 
-	virtual ~AnyIterator();
+	~AnyIterator() override;
 		/// Destroys the AnyIterator.
 
 	// OrderIteratorImpl
-	OrderContent::Ptr next(const std::string& name);
-	const std::set<std::string>& validNexts() const;
-	bool end() const;
-	bool validNext(const std::string& name) const;
-	void close();
-	bool canClose() const;
-	void reset();
+	OrderContent::Ptr next(const std::string& name) override;
+	[[nodiscard]] const std::set<std::string>& validNexts() const override;
+	[[nodiscard]] bool end() const override;
+	[[nodiscard]] bool validNext(const std::string& name) const override;
+	void close() override;
+	[[nodiscard]] bool canClose() const override;
+	void reset() override;
 
 private:
 	UInt32 _min;

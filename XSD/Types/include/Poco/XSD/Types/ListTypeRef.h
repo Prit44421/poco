@@ -37,19 +37,19 @@ public:
 	ListTypeRef(const std::string& id, const QName& itemType);
 		/// Creates the ListTypeRef.
 
-	virtual ~ListTypeRef();
+	~ListTypeRef() override;
 		/// Destroys the ListTypeRef.
 
-	const QName& itemTypeRef() const;
+	[[nodiscard]] const QName& itemTypeRef() const;
 		/// Returns the type reference of the base class
 
-	const std::vector<const Type*>& types() const;
+	[[nodiscard]] const std::vector<const Type*>& types() const override;
 		/// Returns the type that we inherit from.
 
-	void fixup();
+	void fixup() override;
 		/// Replaces type references with the referenced type object.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	QName       _itemType;

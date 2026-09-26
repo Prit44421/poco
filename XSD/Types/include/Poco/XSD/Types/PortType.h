@@ -42,35 +42,35 @@ public:
 	PortType();
 		/// Creates the PortType.
 
-	PortType(const std::string& name);
+	explicit PortType(const std::string& name);
 		/// Creates the PortType.
 
-	~PortType();
+	~PortType() override;
 		/// Destroys the PortType.
 
 	void setName(const std::string& name);
 		/// Sets the name.
 
-	const std::string& name() const;
+	[[nodiscard]] const std::string& name() const;
 		/// Returns the name.
 		
 	void addOperation(Operation::Ptr pOperation);
 		/// Adds an Operation to the PortType.
 		
-	Operation::Ptr findOperation(const std::string& name) const;
+	[[nodiscard]] Operation::Ptr findOperation(const std::string& name) const;
 		/// Returns the Operation object with the given name, or
 		/// a null pointer if the operation does not exist.
 	
-	const Operations& operations() const;
+	[[nodiscard]] const Operations& operations() const;
 		/// Returns the Operations map.
 		
-	const BindingProperties& bindingProperties() const;
+	[[nodiscard]] const BindingProperties& bindingProperties() const;
 		/// Returns the binding properties.
 		
-	BindingProperties& bindingProperties();
+	[[nodiscard]] BindingProperties& bindingProperties();
 		/// Returns the binding properties.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
  		
 private:
 	std::string _name;

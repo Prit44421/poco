@@ -36,23 +36,23 @@ class XSDTypes_API SequenceIterator: public OrderIteratorImpl
 	/// An iterator for iterating over Sequence content groups.
 {
 public:
-	SequenceIterator(const Sequence& data);
+	explicit SequenceIterator(const Sequence& data);
 		/// Creates the SequenceIterator.
 
 	SequenceIterator(const std::vector<OrderIterator>& its, UInt32 min);
 		/// Creates the SequenceIterator.
 
-	virtual ~SequenceIterator();
+	~SequenceIterator() override;
 		/// Destroys the SequenceIterator.
 
 	// OrderIteratorImpl
-	OrderContent::Ptr next(const std::string& name);
-	const std::set<std::string>& validNexts() const;
-	bool end() const;
-	bool validNext(const std::string& name) const;
-	void close();
-	bool canClose() const;
-	void reset();
+	OrderContent::Ptr next(const std::string& name) override;
+	[[nodiscard]] const std::set<std::string>& validNexts() const override;
+	[[nodiscard]] bool end() const override;
+	[[nodiscard]] bool validNext(const std::string& name) const override;
+	void close() override;
+	[[nodiscard]] bool canClose() const override;
+	void reset() override;
 
 private:
 	using Iterators = std::vector<OrderIterator>;

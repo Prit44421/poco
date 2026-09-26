@@ -32,11 +32,6 @@ OrderIterator::OrderIterator(OrderIteratorImpl::Ptr pImpl):
 }
 
 
-OrderIterator::~OrderIterator()
-{
-}
-
-
 OrderContent::Ptr OrderIterator::next(const std::string& name)
 {
 	return _pImpl->next(name);

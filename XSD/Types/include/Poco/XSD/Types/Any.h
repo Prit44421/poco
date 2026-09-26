@@ -43,20 +43,20 @@ public:
 	Any(const std::string& id, Poco::UInt32 minOcc, Poco::UInt32 maxOcc, const std::string& ns="##any", ProcessStyle style = PS_STRICT);
 		/// Creates the Any.
 
-	virtual ~Any();
+	~Any() override;
 		/// Destroys the Any.
 
-	void fixup();
+	void fixup() override;
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
-	const std::string& nameSpace() const;
+	[[nodiscard]] const std::string& nameSpace() const;
 		/// The namespace allowed for the any attribute
 
-	ProcessStyle style() const;
+	[[nodiscard]] ProcessStyle style() const;
 		/// The processing for any attribute
 
-	OrderIterator iterator() const;
+	[[nodiscard]] OrderIterator iterator() const override;
 
 private:
 	std::string _nameSpace;

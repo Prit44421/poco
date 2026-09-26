@@ -23,8 +23,3 @@ Parameter::Parameter(const std::string& name,
 	_direction(DIR_IN)
 {
 }
-
-
-Parameter::~Parameter()
-{
-}

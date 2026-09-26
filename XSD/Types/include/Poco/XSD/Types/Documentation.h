@@ -34,13 +34,13 @@ public:
 	Documentation(const std::string& sourceUri, const std::string& lang);
 		/// Creates the Documentation.
 
-	virtual ~Documentation();
+	~Documentation() override;
 		/// Destroys the Documentation.
 
-	const std::string& language() const;
+	[[nodiscard]] const std::string& language() const;
 		/// The language of the documentation entry. Can be empty.
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	std::string _language;

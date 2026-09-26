@@ -36,13 +36,13 @@ public:
 	AttributeContent(const std::string& id, const std::string& name);
 		/// Creates the AttributeContent.
 
-	virtual ~AttributeContent();
+	~AttributeContent() override;
 		/// Destroys the AttributeContent.
 
-	virtual const std::string& name() const;
+	[[nodiscard]] virtual const std::string& name() const;
 		/// The name of the attribute. Only set for root level attributes.
 
-	virtual bool isAny() const = 0;
+	[[nodiscard]] virtual bool isAny() const = 0;
 		/// Returns true for the any attribute.
 
 	virtual void fixup() = 0;

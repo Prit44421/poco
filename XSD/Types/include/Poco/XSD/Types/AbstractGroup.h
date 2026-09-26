@@ -36,19 +36,19 @@ public:
 	AbstractGroup(const std::string& id, Poco::UInt32 minOcc, Poco::UInt32 maxOcc);
 		/// Creates the AbstractGroup.
 
-	virtual ~AbstractGroup();
+	~AbstractGroup() override;
 		/// Destroys the AbstractGroup.
 
-	virtual void fixup() = 0;
+	void fixup() override = 0;
 		/// Resolves references to point to the actual types
 
-	virtual Order::Ptr getChild() const = 0;
+	[[nodiscard]] virtual Order::Ptr getChild() const = 0;
 		/// Returns the child of the group
 
-	virtual const std::string& name() const = 0;
+	[[nodiscard]] virtual const std::string& name() const = 0;
 		/// Returns the non-empty name
 
-	OrderIterator iterator() const;
+	[[nodiscard]] OrderIterator iterator() const override;
 };
 
 

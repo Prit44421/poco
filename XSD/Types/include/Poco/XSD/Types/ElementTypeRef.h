@@ -54,14 +54,14 @@ public:
 		const QName& typeRef);
 		/// Creates an initialized ElementTypeRef
 
-	virtual ~ElementTypeRef();
+	~ElementTypeRef() override;
 		/// Destroys the ElementTypeRef.
 
-	void fixup();
+	void fixup() override;
 
-	const Type& type() const;
+	[[nodiscard]] const Type& type() const override;
 
-	void accept(Visitor& v) const;
+	void accept(Visitor& v) const override;
 
 private:
 	const Type* _pType;

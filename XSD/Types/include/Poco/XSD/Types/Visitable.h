@@ -37,13 +37,13 @@ public:
 	Visitable();
 		/// Creates the Visitable.
 
-	Visitable(const std::string& id);
+	explicit Visitable(const std::string& id);
 		/// Creates the Visitable with the given ID.
 
-	virtual ~Visitable();
+	~Visitable() override;
 		/// Destroys the Visitable.
 
-	const std::string& id() const;
+	[[nodiscard]] const std::string& id() const;
 		/// Returns the id of the object
 
 	virtual void accept(Visitor& v) const = 0;

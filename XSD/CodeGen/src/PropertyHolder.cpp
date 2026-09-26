@@ -17,11 +17,6 @@ PropertyHolder::PropertyHolder():
 }
 
 
-PropertyHolder::~PropertyHolder()
-{
-}
-
-
 const std::string& PropertyHolder::get(const std::string& id) const
 {
 	Properties::const_iterator it = _props.find(id);

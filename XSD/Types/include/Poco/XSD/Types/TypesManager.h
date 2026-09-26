@@ -95,7 +95,7 @@ public:
 	using Definitionss = std::map<std::string, Definitions::Ptr>;
 		/// Maps a namespace to a WSDL file
 
-	static TypesManager& instance();
+	[[nodiscard]] static TypesManager& instance();
 		/// Returns the TypesManager singleton.
 		
 	void fixupSchemas();
@@ -103,13 +103,13 @@ public:
 		/// Must be called after all schemas have been loaded to
 		/// resolve dependencies.
 
-	bool hasSchema(const std::string& ns) const;
+	[[nodiscard]] bool hasSchema(const std::string& ns) const;
 		/// Checks if a schema with the given namespace exists.
 
-	bool hasDefinitions(const std::string& ns) const;
+	[[nodiscard]] bool hasDefinitions(const std::string& ns) const;
 		/// Checks if a WSDL with the given namespace exists.
 
-	bool hasSchemaLocation(const Poco::URI& uri) const;
+	[[nodiscard]] bool hasSchemaLocation(const Poco::URI& uri) const;
 		/// Returns true if from the given URI a schema was loaded.
 
 	void addSchema(Schema::Ptr pSchema, const Poco::URI& schemaLocation);
@@ -135,57 +135,58 @@ public:
 		/// Removes every namespace entry that refers to pDefinitions.
 		/// The Parser calls it for the definitions of a document that failed to parse.
 
-	Schema::Ptr findSchema(const std::string& ns);
+	[[nodiscard]] Schema::Ptr findSchema(const std::string& ns);
 		/// Returns the Schema for the given target namespace
 		/// or a null pointer if no schema exists for the given target namespace.
 
-	Schema::Ptr findSchema(const Poco::URI& schemaLocation);
+	[[nodiscard]] Schema::Ptr findSchema(const Poco::URI& schemaLocation);
 		/// Returns the Schema for the given target namespace
 		/// or a null pointer if no schema exists for the given target namespace.
 
-	Schema& getSchema(const std::string& ns);
+	[[nodiscard]] Schema& getSchema(const std::string& ns);
 		/// Returns the Schema for the given target namespace.
 		/// Throws a Poco::NotFoundException if no schema has been defined for the
 		/// given target namespace.
 	
-	Definitions::Ptr findDefinitions(const std::string& ns);
+	[[nodiscard]] Definitions::Ptr findDefinitions(const std::string& ns);
 		/// Returns the WSDL Definitions for the given target namespace
 		/// or a null pointer if no definitions exist for the given target namespace.
 
-	Definitions& getDefinitions(const std::string& ns);
+	[[nodiscard]] Definitions& getDefinitions(const std::string& ns);
 		/// Returns the WSDL Definitions for the given target namespace.
 		/// Throws a Poco::NotFoundException if no WSDL has been defined for the
 		/// given target namespace.
 		
-	const Definitionss& getDefinitions() const;
+	[[nodiscard]] const Definitionss& getDefinitions() const;
 		/// Returns all known WSDL definitions.
 
-	const Schemas& getSchemas() const;
+	[[nodiscard]] const Schemas& getSchemas() const;
 		/// Returns all known schemas.
 
 	bool eraseSchema(const std::string& ns);
 		/// Deletes the schema for the given namespace and every location entry
 		/// that refers to it. Returns true if the schema was found and erased.
 
-	const Type* getType(const QName& ref) const;
+	[[nodiscard]] const Type* getType(const QName& ref) const;
 		/// Returns a type for the given QName or null if not found.
 
-	const Element* getElement(const QName& ref) const;
+	[[nodiscard]] const Element* getElement(const QName& ref) const;
 		/// Returns an element for the given QName or null if not found.
 
-	const AbstractAttribute* getAttribute(const QName& ref) const;
+	[[nodiscard]] const AbstractAttribute* getAttribute(const QName& ref) const;
 		/// Returns an attribute for the given QName or null if not found.
 
-	const AbstractAttributeGroup* getAttributeGroup(const QName& ref) const;
+	[[nodiscard]] const AbstractAttributeGroup* getAttributeGroup(const QName& ref) const;
 		/// Returns an attribute group for the given QName or null if not found.
 
-	const Group* getGroup(const QName& ref) const;
+	[[nodiscard]] const Group* getGroup(const QName& ref) const;
 		/// Returns an attribute group for the given QName or null if not found.
 
 private:
 	void setSchemaInternal(Schema::Ptr pSchema, const Poco::URI& schemaLocation);
 		/// Will fail if a schema with the same namespace exists and conflicts with the new one.
-		/// Set fixupSchema to false if are inside an include from another schema file.
+		/// Otherwise adds the schema, or merges it into the existing schema for its namespace,
+		/// and records it for schemaLocation.
 
 	static void mergeSchema(Schema& target, const Schema& source);
 		/// Adds every declaration and imported schema of source that target does not have yet
